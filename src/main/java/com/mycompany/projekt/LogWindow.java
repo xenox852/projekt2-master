@@ -82,7 +82,7 @@ coes new form LogWindow
         jSeparator1 = new javax.swing.JSeparator();
         jLabel4 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
-        loginButton = new javax.swing.JButton();
+        javax.swing.JButton loginButton = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
 
         alertWindow.setTitle("Alert");
@@ -260,7 +260,6 @@ this.setEnabled(true);
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTextField login;
-    private javax.swing.JButton loginButton;
     private javax.swing.JPasswordField password;
     // End of variables declaration//GEN-END:variables
 }
