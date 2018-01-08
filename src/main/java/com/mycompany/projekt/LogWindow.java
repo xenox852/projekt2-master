@@ -19,6 +19,7 @@ public class LogWindow extends javax.swing.JFrame {
            boolean isFalse=false;
            Connection conn;
            Statement statement;
+           public String nazwaUser;
     public DB(){}
     /** Metoda służy do łączenia się z bazą danych i obsługi związanych z nią wyjątków
      * 
@@ -35,6 +36,7 @@ Class.forName("com.mysql.cj.jdbc.Driver");
 conn = DriverManager.getConnection(db_connect_string, db_userid, db_password);
 System.out.println("Połączono!");
 statement= conn.createStatement();
+nazwaUser=db_userid;
 }
 catch (Exception e)
 {
@@ -53,29 +55,7 @@ public void dbConnect(String db_connect_string, String db_userid, String db_pass
 try
 {
 Class.forName("com.mysql.cj.jdbc.Driver");
-conn = DriverManager.getConnection(db_connect_string, db_userid, db_password);
-System.out.println("connected");
- Statement statement = conn.createStatement();
-String queryString = "select * from Users";
-ResultSet rs = statement.executeQuery(queryString);
-while (rs.next()) {
-System.out.println(rs.getString(1));
-}
-
- 
-}
-catch (Exception e)
-{
-    isFalse = true;
-    
-e.printStackTrace();
-
-}
-}
-};
-*/
-    /**
-     * Creates new form LogWindow
+coes new form LogWindow
      */
     public LogWindow() {
         initComponents();
@@ -144,7 +124,7 @@ e.printStackTrace();
         jPanel2.setVerifyInputWhenFocusTarget(false);
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        login.setText("sql11211999");
+        login.setText("sql2212964");
         login.setBorder(null);
         jPanel2.add(login, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 400, -1));
 
@@ -158,7 +138,7 @@ e.printStackTrace();
         jLabel3.setText("Login");
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 60, 60, -1));
 
-        password.setText("L3cEfQtG5F");
+        password.setText("tV5!yB5!");
         password.setBorder(null);
         password.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -210,7 +190,7 @@ e.printStackTrace();
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
 DB db = new DB();
-db.dbConnect("jdbc:mysql://sql11.freesqldatabase.com/sql11211999", login.getText(), password.getText());
+db.dbConnect("jdbc:mysql://sql2.freesqldatabase.com/sql2212964", login.getText(), password.getText());
 if(db.isFalse==true){
     alertWindow.setVisible(true);
     this.setEnabled(false);
