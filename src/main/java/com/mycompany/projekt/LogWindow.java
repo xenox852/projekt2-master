@@ -20,6 +20,7 @@ public class LogWindow extends javax.swing.JFrame {
            Connection conn;
            Statement statement;
            public String nazwaUser;
+           
     public DB(){}
     /** Metoda służy do łączenia się z bazą danych i obsługi związanych z nią wyjątków
      * 
@@ -124,7 +125,6 @@ coes new form LogWindow
         jPanel2.setVerifyInputWhenFocusTarget(false);
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        login.setText("sql2212964");
         login.setBorder(null);
         jPanel2.add(login, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 400, -1));
 
@@ -138,7 +138,6 @@ coes new form LogWindow
         jLabel3.setText("Login");
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 60, 60, -1));
 
-        password.setText("tV5!yB5!");
         password.setBorder(null);
         password.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -190,19 +189,41 @@ coes new form LogWindow
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
 DB db = new DB();
-db.dbConnect("jdbc:mysql://sql2.freesqldatabase.com/sql2212964", login.getText(), password.getText());
+db.dbConnect("jdbc:mysql://sql2.freesqldatabase.com/sql2212964", "sql2212964", "tV5!yB5!");
 if(db.isFalse==true){
     alertWindow.setVisible(true);
     this.setEnabled(false);
 }
 else{
-    MainWindow zmiana;
-    zmiana = new MainWindow();
-    zmiana.setVisible(true);
-    zmiana.db =db;
-    this.dispose();
-    
+    String queryString;
+        int loginIlosc=0;
+    try{
+        
+             db.statement = db.conn.createStatement();
+              queryString = "SELECT COUNT(Login) FROM Users WHERE Login = '"+login.getText()+"' and Password ='"+password.getText()+"'";
+              ResultSet rs;
+              rs = db.statement.executeQuery(queryString);
+              while(rs.next())
+              loginIlosc=rs.getInt(1);
+       }
+       catch(Exception e){
+           e.printStackTrace();
+              }
+if(loginIlosc==0){
+    alertWindow.setVisible(true);
+    this.setEnabled(false);
 }
+else{
+    
+     MainWindow zmiana;
+    zmiana = new MainWindow();
+    zmiana.db =db;
+    zmiana.setVisible(true);
+    this.dispose();
+}
+ 
+}
+
         // TODO add your handling code here:
     }//GEN-LAST:event_loginButtonActionPerformed
 
