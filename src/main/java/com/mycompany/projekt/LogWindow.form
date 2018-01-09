@@ -142,7 +142,6 @@
           <SubComponents>
             <Component class="javax.swing.JTextField" name="login">
               <Properties>
-                <Property name="text" type="java.lang.String" value="sql2212964"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
                 </Property>
@@ -187,7 +186,6 @@
             </Component>
             <Component class="javax.swing.JPasswordField" name="password">
               <Properties>
-                <Property name="text" type="java.lang.String" value="tV5!yB5!"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
                 </Property>
